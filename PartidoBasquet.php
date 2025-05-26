@@ -33,6 +33,22 @@
             $mensaje .= "Coeficiente de penalizacion: " . $this -> getCoef_penalizacion() . "\n";
             return $mensaje;
         }
+
+        /** Por otro lado, si se trata de un partido de basquetbol  se almacena la cantidad de infracciones 
+         * de manera tal que al coeficiente base se debe restar un coeficiente de penalización, 
+         * cuyo valor por defecto es: 0.75, * (por) la cantidad de infracciones. Es decir:
+         * coef  = coeficiente_base_partido  - (coef_penalización*cant_infracciones);  
+        */
+        public function coeficienteBase()  {
+            $base = parent::coeficienteBase();
+            $penalizacion = $this -> getCoef_penalizacion();//Penalizacion
+            $infracciones = $this -> getCantInfracciones();
+
+            $coeficiente = $base - ($penalizacion * $infracciones);
+
+            return $coeficiente;
+
+        }
     }
 
 

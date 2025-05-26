@@ -37,7 +37,6 @@ class Partido{
         return $this->fecha;
     }
 
-
     public function setCantGolesE1($cantGolesE1){
         $this->cantGolesE1= $cantGolesE1;
     }
@@ -52,8 +51,6 @@ class Partido{
     public function getCantGolesE2(){
         return $this->cantGolesE2;
     }
-
-
 
     public function setObjEquipo1($objEquipo1){
         $this->objEquipo1= $objEquipo1;
@@ -92,6 +89,50 @@ class Partido{
         $mensaje = "\n"."--------------------------------------------------------"."\n";
         return $mensaje;
     }
+
+    /** En cada partido se gestiona un coeficiente base cuyo valor por defecto es 0.5  y es 
+     * aplicado a la cantidad de goles y a la cantidad de jugadores de cada equipo. Es decir:
+     *  coef =  0,5 * cantGoles * cantJugadores  donde cantGoles : es la cantidad de goles;   
+     * cantJugadores : es la cantidad de jugadores.
+    */
+    public function coeficienteBase(){
+        $base = $this -> getCoefBase();
+        $cantJE1 = $this -> getObjEquipo1() -> getCantJugadores();//Obtengo la cantidad de jugadores del equipo 1
+        $cantGolE1 = $this -> getCantGolesE1();//Obtengo la cantidad de goles del equipo1
+        $cantJE2 = $this -> getObjEquipo2() -> getCantJugadores();//Obtengo la cantidad de jugadores del equipo2
+        $cantGolE2 = $this -> getCantGolesE2();//Goles equipo 2
+
+        $golesTotales = $cantGolE1 + $cantGolE2;//goles totales
+        $jugadoresTotal = $cantJE1 + $cantJE2;//total jugadores
+
+        $coeficiente = $base * $golesTotales * $jugadoresTotal;
+
+        return $coeficiente;
+
+    }
+
+    /** Implementar en la clase Partido el método darEquipoGanador() que retorna el equipo 
+     * ganador de un partido (equipo con mayor cantidad de goles del partido), en caso de 
+     * empate debe retornar a los dos equipos.  
+    */
+
+    public function darEquipoGanador(){
+        $golesE1 = $this -> getCantGolesE1();
+        $golesE2 = $this -> getCantGolesE2();
+        $equipo1 = $this -> getObjEquipo1();
+        $equipo2 = $this -> getObjEquipo2();
+
+        if ($golesE1 > $golesE2) {
+            $ganador = $equipo1;
+        } elseif ($golesE1 < $golesE2) {
+            $ganador = $equipo2;
+        } else {
+            $ganador = [$equipo1, $equipo2];
+        }
+
+        return $ganador;
+    } 
+
 }
 
 
