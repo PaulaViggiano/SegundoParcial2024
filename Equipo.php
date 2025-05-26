@@ -48,11 +48,11 @@ class Equipo{
 
 public function __toString(){
         //string $cadena
-        $cadena = "Nombre: ".$this->getNombre()."\n";
-        $cadena = $cadena. "capitan: ".$this->getCapitan()."\n";
-         $cadena = $cadena. "Categoria: ".$this->getObjCategoria()->getDescripcion()."\n";
-        $cadena = $cadena. "Cant. Jugadores: ".$this->getCantJugadores()."\n";
-        return $cadena;
+        $mensaje = "Nombre: ".$this->getNombre()."\n";
+        $mensaje .= "capitan: ".$this->getCapitan()."\n";
+        $mensaje .= "Categoria: ".$this->getObjCategoria()->getDescripcion()."\n";
+        $mensaje .= "Cant. Jugadores: ".$this->getCantJugadores()."\n";
+        return $mensaje;
          }
      }
 ?>

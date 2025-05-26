@@ -13,6 +13,26 @@
         }
 
         //METODOS DE ACCESO GETTERS Y SETTERS
+        public function getCantInfracciones(){
+            return $this -> cantInfracciones;
+        }
+        public function setCantInfracciones($cantInfracciones){
+            $this -> cantInfracciones = $cantInfracciones;
+        }
+        public function getCoef_penalizacion(){
+            return $this -> coef_penalizacion;
+        }
+        public function setCoef_penalizacion($coef_penalizacion){
+            $this -> coef_penalizacion = $coef_penalizacion;
+        }
+
+        //METODO TOSTRING
+        public function __toString()        {
+            $mensaje = parent::__toString();
+            $mensaje .= "Cantidad de infracciones: " . $this -> getCantInfracciones() . "\n";   
+            $mensaje .= "Coeficiente de penalizacion: " . $this -> getCoef_penalizacion() . "\n";
+            return $mensaje;
+        }
     }
 
 
