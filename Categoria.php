@@ -27,8 +27,9 @@ class Categoria{
 
     public function __toString(){
         //string $cadena
-        $cadena = "IdCategoria: ".$this->getidcategoria()."\n";
-        $cadena = $cadena. "descripcion: ".$this->getDescripcion()."\n";
+        $mensaje = "IdCategoria: ".$this->getidcategoria()."\n";
+        $mensaje .= "descripcion: ".$this->getDescripcion()."\n";
+        return $mensaje;
     }
 }
 ?>

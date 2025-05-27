@@ -31,6 +31,7 @@
             }
             $mensaje = "Premio: " . $this -> getPremio() . "\n";
             $mensaje .= "Partidos: \n" . $cadenaCol;
+
             
             return $mensaje;
         }    
@@ -56,7 +57,7 @@
             $categoria2 = $OBJEquipo2 -> getObjCategoria() -> getDescripcion();//categoria equipo 2
             $partido = null;
             $tipoPartido = strtolower($tipoPartido);
-            if ($tipoPartido === "futbol") {
+            if ($tipoPartido == "futbol") {
                 
                 if ($equipo1 == $equipo2 && $categoria1 == $categoria2) {
                     $partido = new PartidoFutbol($id, $fecha, $OBJEquipo1,3, $OBJEquipo2, 1);
@@ -65,7 +66,7 @@
                     
                 } 
                 
-            } elseif ($tipoPartido === "basquetbol") {
+            } elseif ($tipoPartido == "basquet") {
                 if ($equipo1 == $equipo2 && $categoria1 == $categoria2) {
                     $partido = new PartidoBasquet($id, $fecha, $OBJEquipo1, 35, $OBJEquipo2, 87, 5);
                     $arregloPartidos[] = $partido;
@@ -86,15 +87,20 @@
 
         public function darGanadores($deporte){
             
-            $elPartidoDe = strtolower($deporte);//Paso a minuscula el deporte que quiero buscar
             $partidos = $this -> getColPartidos();//Obtengo la colecccion de partidos
             $ganadores = [];//Inicializo el return vacio
+
             foreach ($partidos as $partido) {
-                $tipoPartido = is_a($partido, $elPartidoDe);//Me fijo si el objeto es el tipo que estoy buscando para guardar
-                if ($tipoPartido) {
-                    $ganador = $partido -> darGanadores();
+                $esPartidoFutbol = is_a($partido, 'PartidoFutbol');//Me fijo si el objeto es el tipo que estoy buscando para guardar
+                $esPartidoBasquet = is_a($partido, 'PartidoBasquet');
+                if ($esPartidoFutbol && $deporte == "futbol") {
+                    $ganador = $partido -> darEquipoGanador();
+                    $ganadores[] = $ganador;
+                } elseif ($esPartidoBasquet && $deporte == "basquet") {
+                    $ganador = $partido -> darEquipoGanador();
                     $ganadores[] = $ganador;
                 }
+                
             }
 
             return $ganadores;

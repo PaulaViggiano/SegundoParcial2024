@@ -5,6 +5,10 @@
             parent::__construct($idpartido, $fecha,$objEquipo1,$cantGolesE1,$objEquipo2,$cantGolesE2);
         }
 
+        public function __toString() {
+            $mensaje = parent::__toString();
+            return $mensaje;
+        }
 
         public function coeficienteBase() {
             $categoria = $this -> getObjEquipo1() -> getObjCategoria() -> getDescripcion();//Obtengo la categoria

@@ -78,15 +78,15 @@ class Partido{
     public function __toString(){
         //string $cadena
         $mensaje = "idpartido: ".$this->getIdpartido()."\n";
-        $mensaje = "Fecha: ".$this->getFecha()."\n";
-        $mensaje ="\n"."--------------------------------------------------------"."\n";
-        $mensaje = "<Equipo 1> "."\n".$this->getObjEquipo1()."\n";
-        $mensaje = "Cantidad Goles E1: ".$this->getCantGolesE1()."\n";
-        $mensaje = "\n"."--------------------------------------------------------"."\n";
-        $mensaje = "\n"."--------------------------------------------------------"."\n";
-        $mensaje = "<Equipo 2> "."\n".$this->getObjEquipo2()."\n";
-        $mensaje = "Cantidad Goles E2: ".$this->getCantGolesE2()."\n";
-        $mensaje = "\n"."--------------------------------------------------------"."\n";
+        $mensaje .= "Fecha: ".$this->getFecha()."\n";
+        $mensaje .="\n"."--------------------------------------------------------"."\n";
+        $mensaje .= "<Equipo 1> "."\n".$this->getObjEquipo1()."\n";
+        $mensaje .= "Cantidad Goles E1: ".$this->getCantGolesE1()."\n";
+        $mensaje .= "\n"."--------------------------------------------------------"."\n";
+        $mensaje .= "\n"."--------------------------------------------------------"."\n";
+        $mensaje .= "<Equipo 2> "."\n".$this->getObjEquipo2()."\n";
+        $mensaje .= "Cantidad Goles E2: ".$this->getCantGolesE2()."\n";
+        $mensaje .= "\n"."--------------------------------------------------------"."\n";
         return $mensaje;
     }
 
