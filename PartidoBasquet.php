@@ -34,6 +34,7 @@
             return $mensaje;
         }
 
+
         /** Por otro lado, si se trata de un partido de basquetbol  se almacena la cantidad de infracciones 
          * de manera tal que al coeficiente base se debe restar un coeficiente de penalización, 
          * cuyo valor por defecto es: 0.75, * (por) la cantidad de infracciones. Es decir:
@@ -49,6 +50,7 @@
             return $coeficiente;
 
         }
+
     }
 
 
